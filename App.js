@@ -5,23 +5,32 @@ const App = () => {
   const[email,setEmail]=useState("")
   return (
     <>
-    <TouchableOpacity onPress={() => {
+    {/* <TouchableOpacity onPress={() => {
           var OpenActivity=NativeModules.OpenActivity;
 OpenActivity.open();
          }}>
            
            <Text>Alien</Text>
-         </TouchableOpacity>
-    {/* <TouchableOpacity onPress={()=>{
+         </TouchableOpacity> */}
+    <TouchableOpacity onPress={()=>{
       var openActivity=NativeModules.OpenActivity;
       openActivity.open((value)=>{
-        openActivity.getEmail((value1)=>{
-          setEmail(value1)
-        })
+        
       })
     }}>
       <Text>open app</Text>
-    </TouchableOpacity> */}
+    </TouchableOpacity>
+    <TouchableOpacity onPress={() => {
+      var openActivity=NativeModules.OpenActivity;
+          openActivity.getEmail((value1)=>{
+            setEmail(value1)
+          })
+         }}><Text>Get details</Text></TouchableOpacity>
+         <TouchableOpacity onPress={() => {
+      var openActivity=NativeModules.OpenActivity;
+          openActivity.signOut()
+         }}><Text>signout</Text></TouchableOpacity>
+         
     <Text>{email}</Text>
     </>
   )
